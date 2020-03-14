@@ -1,0 +1,73 @@
+.heading2 {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.block {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.full {
+    max-width: inherit;
+}
+
+#WCSTkeyCards{
+    display: none;
+}
+
+.KeyCards{
+    height : 200px; 
+    width : 200px;
+    cursor : pointer; 
+    cursor : hand;
+}
+
+#WCSTgameInstructions{
+    display: none; 
+}
+
+#WCSTresponseCard{
+    height : 200px; 
+    width : 200px;
+    display : none;
+}
+
+#WCSTright{
+    color : green; 
+    display : none; 
+}
+
+#WCSTwrong{
+    color : red; 
+    display : none; 
+}
+
+#WCSTendInstructions{
+    display : none; 
+}
+
+ /* Small devices (landscape phones, 576px and up) */
+ @media (min-width: 576px) { 
+    .KeyCards{
+        height : 100px; 
+        width : 100px;
+        padding-bottom: 10px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 760px) { 
+    .KeyCards{
+        height : 125px; 
+        width : 125px;
+        padding-bottom: 10px;
+    }
+ }
+ @media (min-width : 992px) {
+    .KeyCards{
+        height : 150px; 
+        width : 150px;
+        padding-bottom: 10px;
+    }
+}

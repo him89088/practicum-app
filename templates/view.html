@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div>
+    {% for log_row in the_data %}
+    <p>
+        {% for item in log_row %}
+            {{ item }}
+        {% endfor %}
+    </p>
+    {% endfor %}
+</div>
+
+{% endblock %}

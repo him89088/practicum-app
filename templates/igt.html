@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container-fluid container-sm container-md container-lg container-xl heading2">
+    <div class = "row">
+        <div class="col">
+            <h2 class="text-center text-sm-center text-md-center text-lg-center text-xl-center">{{ title }}</h2>
+        </div>
+    </div>
+</div>
+
+<div id="info" class="container container-sm container-md container-lg container-xl">
+    <div class = "row text-center ">
+        <div class="col ">
+            <!-- <h4 class="modal-title">Welcome to IGT <span id="game_version"></span></h4> -->
+            <section class = "text-justify block">
+                <!-- <p>Rules:</p> -->
+                <ol>
+                    <li>In front of you on the screen, there are 4 decks of cards: A, B, C, and D.</li>
+                    <li>When we begin the game, I want you to select one card at a time by clicking on a card from any deck you choose.</li>
+                    <li>Each time you select a card, the computer will tell you that you won some money. I don't know how much money you will win. You will find out as we go along. Every time you win, the bar gets bigger.</li>
+                    <li>Every so often, when you click on a card, the computer will tell you that you won some money as usual, but then it will say that you lost some money as well. I don't know when you will lose or how much. You will find out as we go along. Every time you lose, the bar gets smaller.</li>
+                    <li>You are absolutely free to switch from one deck to the other at any time, and as often as you wish.</li>
+                    <li>The goal of the game is to win as much money as possible and avoid losing as much money as possible.</li>
+                    <li>You won't know when the game will end. Simply keep on playing until the computer stops.</li>
+                    <li>I am going to give you €2000 of credit to start the game. </li>
+                    <li>The only hint I can give you, and the most important thing to note is this: Out of these four decks of cards, there are some that are worse than others, and to win you should try to stay away from bad decks. No matter how much you find yourself losing, you can still win the game if you avoid the worst decks.</li>
+                    <li>Also note that the computer does not change the order of the cards once the game begins. It does not make you lose at random, or make you lose money based on the last card you picked.</li>							
+                </ol>                        
+            </section>
+            <div class= "text-center">
+                <button type="button" class="btn btn-outline-primary" onclick="game()">Start</button>
+            </div>								
+        </div>
+    </div>
+</div>
+
+<main id="game" class="container" style="display: none;">
+	<section class="row">
+		<div class="col-xs-3">
+			<figure>
+				<a id="card-one" href="#" class="card">
+					<img class="img-responsive" alt="card back 1" src="static/img/blue-back.png" />
+				</a>
+				<figcaption>
+					Deck A <span id="deck-one-clicks"></span>
+				</figcaption>
+			</figure>
+		</div>
+		<div class="col-xs-3">
+			<figure>
+				<a id="card-two" href="#" class="card">
+					<img class="img-responsive" alt="card back 1" src="static/img/blue-back.png" />
+				</a>
+				<figcaption>
+					Deck B <span id="deck-two-clicks"></span>
+				</figcaption>
+			</figure>
+		</div>
+		<div class="col-xs-3">
+			<figure>
+				<a id="card-three"  href="#" class="card">
+					<img class="img-responsive" alt="card back 1" src="static/img/blue-back.png" />
+				</a>
+				<figcaption>
+					Deck C <span id="deck-three-clicks"></span>
+				</figcaption>
+			</figure>
+		</div>
+		<div class="col-xs-3">
+			<figure>
+				<a id="card-four" href="#" class="card">
+					<img class="img-responsive" alt="card back 1" src="static/img/blue-back.png" />
+				</a>
+				<figcaption>
+					Deck D <span id="deck-four-clicks"></span>
+				</figcaption>
+			</figure>
+		</div>
+	</section>
+	
+	<section class="row full">
+		<div class="progress">
+			<div id="cashpilebar" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="2000" aria-valuemin="0" aria-valuemax="6000" style="width: 33%">
+				<span id="cashpileamt">€2000</span>				
+			</div>
+		</div>
+    </section>
+    
+    <section class="row">
+		<div id="gamelog">
+            <p class="outputtext">You won: <span id="winamt"></span></p>
+            <p class="outputtext">You lost: <span id="penaltyamt"></span></p>
+            <p class="outputtext">Net +/-: <span id="netgains"></span></p>
+            <p class="outputtext">Total €: <span id="totalmoney"></span></p>
+		</div>
+    </section>
+</main>
+<form id="endigt" method="POST" style="display: none;">
+	<div class="container container-sm container-md container-lg container-xl heading2 end">
+		<div class = "row text-center ">
+			<div class="col">
+				<section>
+					<p class="full block"> 
+						Thank you! Click Finish.
+					</p>
+				</section>
+				<button value="submit" id="sub" onclick="sendIGT()" class="btn btn-outline-success"> Finish </button>
+			</div>
+		</div>
+	</div>
+</form>
+<script type="text/javascript" src="{{ url_for('static', filename='js/igt.js') }}""></script>
+
+{% endblock %}

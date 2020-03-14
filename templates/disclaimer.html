@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container-fluid container-sm container-md container-lg container-xl heading2">
+    <div class = "row">
+        <div class="col">
+            <h2 class="text-center text-sm-center text-md-center text-lg-center text-xl-center">{{ title }}</h2>
+        </div>
+    </div>
+</div>
+
+<form action="/survey" method="POST" >
+    <div class="container container-sm container-md container-lg container-xl heading2 end">
+        <div class = "row text-center ">
+            <div class="col">
+                <section>
+                    <p class="full block"> 
+                        BLAH BLAH BLAH!!
+                    </p>
+                </section>
+                <button type = "submit" class="btn btn-outline-primary"> I Agree </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
