@@ -60,7 +60,7 @@ def stroop_page() -> 'html':
 @app.route('/igt', methods=['GET','POST'])
 def igt_page() -> 'html':
     if request.method == "POST":
-        return redirect(url_for(('view_igt')))
+        return redirect(url_for(('insert_igt')))
     return  render_template('igt.html', title='Iowa Gambling Task')
 
 #Inserting WCST Records

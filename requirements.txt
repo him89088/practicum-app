@@ -1,0 +1,9 @@
+# Flask Framework
+Flask==1.1.1
+
+# Flask Packages
+Flask-Session
+
+#MySQL Packages
+MySQL
+mysql-connector-python
