@@ -2,7 +2,7 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify, session
 import json
 from flask_session import Session
-
+import uuid
 from config import Config, UseDatabase
 
 #Setting the app and its configuration
@@ -27,17 +27,21 @@ app.config['dbconfig'] = { 'host' : '127.0.0.1',
 @app.route('/')
 def hello():
     session.permanent = True
-    session['uid'] = str(request.remote_addr)
+    id = uuid.uuid4()
+    # session['uid'] = str(request.remote_addr)
+    session['uid'] = str(id)[:8]
     return redirect(url_for(('disclaimer') ))
 
 #Disclaimer page
 @app.route('/disclaimer', methods=['GET','POST'])
 def disclaimer() -> 'html':
+    if request.method == "POST":
+        return redirect(url_for(('survey')))
     return  render_template('disclaimer.html', title='Disclaimer')
 
 #Survey Page
 @app.route('/survey', methods=['GET','POST'])
-def survey():
+def survey() -> 'html':
     if request.method == "POST":
         return redirect(url_for(('wcst_page')))
     return  render_template('survey.html', title='Survey')
@@ -60,7 +64,7 @@ def stroop_page() -> 'html':
 @app.route('/igt', methods=['GET','POST'])
 def igt_page() -> 'html':
     if request.method == "POST":
-        return redirect(url_for(('insert_igt')))
+        return redirect(url_for(('view_igt')))
     return  render_template('igt.html', title='Iowa Gambling Task')
 
 #Inserting WCST Records
@@ -91,7 +95,6 @@ def insert_survey():
             userid = str(session['uid'])
             print('user : ' + userid)
             for rows in req_data:
-                print(rows)
                 gender = rows['gender']
                 age = rows['age']
                 pain = rows['pain']
@@ -134,6 +137,7 @@ def insert_igt():
             userid = str(session['uid'])
             print('user : ' + userid)
             for rows in req_data:
+                print(rows)
                 choice = rows['selected']
                 gain = rows['profit']
                 loss = rows['loss']

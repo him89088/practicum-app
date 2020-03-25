@@ -25,6 +25,11 @@ var gain = [];
 var loss = [];
 var net = [];
 var totcash = [];
+
+let results = {};
+var res;
+var response = [];
+
 function game(){
     $("#info").hide();
     $("#game").show();
@@ -124,8 +129,7 @@ function game(){
             alert("the game is over");
             $("#endigt").show(); 
             var i;
-            let results = {};
-            var res;
+            
             for (i=0; i< MAXGAMES; i++){
                 results = {
                 selected: selectedCards[i],
@@ -136,34 +140,22 @@ function game(){
                 }
                 response.push(results);
                 res = JSON.stringify(response);
-                
-
             }
-
-            
-                
-                // reactionTime: new Date().getTime() - this.displayTime,
-              
-            
-                  
-            console.log(JSON.stringify(selectedCards));
-            console.log(JSON.stringify(gain));
-            console.log(JSON.stringify(loss));
-            console.log(JSON.stringify(net));
-            console.log(JSON.stringify(totcash));
-            // sendIGT(selectedCards, gain, loss, net, totalcash);
-            // let res = JSON.stringify(results);
-            console.log(res);
-            
-            
+            // console.log(JSON.stringify(selectedCards));
+            // console.log(JSON.stringify(gain));
+            // console.log(JSON.stringify(loss));
+            // console.log(JSON.stringify(net));
+            // console.log(JSON.stringify(totcash));
+            // // sendIGT(selectedCards, gain, loss, net, totalcash);
+            // // let res = JSON.stringify(results);
+            // console.log(res);
         }
     });
-
  }
-var response = [];
- function sendIGT(){
+
+function sendIGT(){
     $.ajax({
-        url: "url_for('insert_igt')", 
+        url: "/insert_igt", 
         data: res, 
         type: 'POST',
         contentType: 'application/json;charset=UTF-8',
@@ -176,4 +168,4 @@ var response = [];
             console.log(error);
         }
     });
-    }
+}

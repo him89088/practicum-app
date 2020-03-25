@@ -141,8 +141,6 @@ function WCSTdisplayWrong() {
     correctness = 0;
 }
 
-
-
 function WCSTlogKeyPressed(code, correct) {
     var key_pressed = code;
     var reaction_time = (Date.now() - startTime);
@@ -154,12 +152,11 @@ function WCSTlogKeyPressed(code, correct) {
     jsdata["reaction_time"] = reaction_time;
     jsdata["outcome"] = correct;
     jsondata.push(jsdata);
-    console.log("Normal "+jsondata);
-    console.log("JSONify "+JSON.stringify(jsondata));
+    // console.log("Normal "+jsondata);
+    // console.log("JSONify "+JSON.stringify(jsondata));
 
     Seq++;
 }
-
 
 function WCSTstateTransitionToEnd() {		//At this state only the end instructions should appear (Thank you for participating...)
     $('#WCSTkeyCards').hide();
@@ -171,12 +168,7 @@ function WCSTstateTransitionToEnd() {		//At this state only the end instructions
     }, 1000);
 }
 
-function finished() {
-    alert('Finish');
-}
-
-function sendJson(){
-  
+function sendJson(){ 
     $.ajax({
         url: "/insert", 
         data: JSON.stringify(jsondata), 

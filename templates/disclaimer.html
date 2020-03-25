@@ -9,7 +9,7 @@
     </div>
 </div>
 
-<form action="/survey" method="POST" >
+<form method="POST" >
     <div class="container container-sm container-md container-lg container-xl heading2 end">
         <div class = "row text-center ">
             <div class="col">
@@ -18,10 +18,10 @@
                         BLAH BLAH BLAH!!
                     </p>
                 </section>
-                <button type = "submit" class="btn btn-outline-primary"> I Agree </button>
+                <button type = "submit" onclick="redirectToSurevy()" class="btn btn-outline-primary"> I Agree </button>
             </div>
         </div>
     </div>
 </form>
-
+<script type="text/javascript" src="{{ url_for('static', filename='js/disclaimer.js') }}"></script>
 {% endblock %}

@@ -1,8 +1,8 @@
-// $(window).bind("pageshow", function() {
-//     var form = $('form'); 
-//     // let the browser natively reset defaults
-//     form[0].reset();
-// });
+$(window).bind("pageshow", function() {
+    var form = $('form'); 
+    // let the browser natively reset defaults
+    form[0].reset();
+});
 
 var gender;
 var age;
@@ -30,7 +30,7 @@ function json(gender, age, pain) {
     surveyData.push(survey);
     console.log("JSONify "+JSON.stringify(surveyData));
 }
-console.log("JSONify "+JSON.stringify(surveyData));
+
 function sendSurvey(){
     $.ajax({
         url: "/insert_survey", 

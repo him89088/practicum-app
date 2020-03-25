@@ -1,24 +1,4 @@
 
-// jQuery( document ).ready(function( $ ) {
-//   let s = new Stroop(10, 'practice');
-//   jQuery(document).keypress(function(e) {
-//     s.getResponse(e);
-//   });
-//   // let g = new Stroop(30, 'game');
-//   // jQuery(document).keypress(function(e) {
-//   //   g.getResponse(e);
-//   // });
-//   s.start();
-//   // g.start();
-//   jQuery(document).on('jStroopEnd', function(event, results) {
-//     alert('Finished!');
-//     console.log(results);
-    
-//   })
-  
-
-// });
-
 function startGame(){
   $("#dialogArea").hide();
   $("#endStroop").hide();
@@ -30,7 +10,6 @@ function startGame(){
 }
 
 class Stroop {
-
   constructor(maxCount, testType) {
     this.validKeys = ['r', 'g', 'b', 'y'];
     this.colors = [
@@ -38,9 +17,6 @@ class Stroop {
       '#00FF00', // green
       '#0000FF', // blue
       '#FFFF00', // yellow
-      // '#FF69B4', //pink
-      // '#FF5733', //orange
-      // '#EE82EE', //violet
     ];
     this.colorKey = [
       'red', 'green', 'blue', 'yellow'
@@ -97,13 +73,6 @@ class Stroop {
       'blue',
       'yellow',
       'green',
-      // 'red',
-      // 'green',
-      // 'yellow',
-      // 'yellow',
-      // 'blue',
-      // 'green',
-      // 'blue',
     ]
 
     this.autoAdvance;
@@ -227,7 +196,6 @@ class Stroop {
     let word = jQuery('.word');
     word.text('+').css({'color': '#000'});
     setTimeout(function() {
-      console.log("Displaying " + self.words[self.currentWord]);
       word.text(self.words[self.currentWord]).css({'color':self.colors[self.currentColor]});
     }, 1000);
   }
@@ -238,7 +206,6 @@ class Stroop {
     $("#endStroop").show();
     setValues(results);
     console.log(results);  
-
   }
 }
 var result_out;
