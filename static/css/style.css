@@ -59,9 +59,6 @@ No media query since this is the default in Bootstrap because it is "mobile firs
         height: 90px;
         width: 90px;
     }
-    .h2{
-        font-size: 1.8rem;
-    }
     #WCSTresponseCard {
         height: 90px;
         width: 90px;
@@ -73,9 +70,6 @@ No media query since this is the default in Bootstrap because it is "mobile firs
     .KeyCards{
         height: 130px;
         width: 130px;
-    }
-    .h2{
-        font-size: 1.8rem;
     }
     #WCSTresponseCard {
         height: 130px;
@@ -89,9 +83,6 @@ No media query since this is the default in Bootstrap because it is "mobile firs
         height: 160px;
         width: 160px;
     }
-    .h2{
-        font-size: 2 rem;
-    }
     #WCSTresponseCard {
         height: 160px;
         width: 160px;
@@ -103,9 +94,6 @@ No media query since this is the default in Bootstrap because it is "mobile firs
     .KeyCards{
         height: 200px;
         width: 200px;
-    }
-    .h2{
-        font-size: 2 rem;
     }
     #WCSTresponseCard {
         height: 200px;

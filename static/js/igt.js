@@ -13,7 +13,7 @@ var totalcash = 2000, //cash in the cash pile
         DECKC_WIN = 50, //how much did we win on Deck C click
         DECKD_WIN = 50, //how much did we win on Deck D click
 	    CASHMAX = 7000, //Maximum amount of cash that can be won.	
-	    MAXGAMES = 10; //maxium amount of plays 100
+	    MAXGAMES = 100; //maxium amount of plays 100
 
 //Penaly schedules. If lookup DECKN_PENALTY[deckNclicks] to get the preset penalty amount. 
 var DECKA_PENALTY = [0, 0, -150, 0, -300, 0, -200, 0, -250, -350, 0, -350, 0, -250, -200, 0, -300, -150, 0, 0, 0, -300, 0, -350, 0, -200, -250, -150, 0, 0, -350, -200, -250, 0, 0, 0, -150, -300, 0, 0];

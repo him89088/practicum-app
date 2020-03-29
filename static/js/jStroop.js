@@ -2,7 +2,7 @@
 function startGame(){
   $("#dialogArea").hide();
   $("#endStroop").hide();
-  let s = new Stroop(5, 'practice');
+  let s = new Stroop(60, 'practice');
   jQuery(document).keyup(function(e) {
     s.getResponse(e);
   });

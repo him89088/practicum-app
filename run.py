@@ -10,18 +10,18 @@ app = Flask(__name__)
 app.config.from_object(Config)
 
 #Setting the local DB
-app.config['dbconfig'] = { 'host' : '127.0.0.1',
-                            'user' : 'wcst_user',
-                            'password' : 'password',
-                            'database' : 'wcst',
-                        }
-
-# Setting the cloud DB
-# app.config['dbconfig'] = { 'host' : '34.89.233.160',
-#                             'user' : 'root',
+# app.config['dbconfig'] = { 'host' : '127.0.0.1',
+#                             'user' : 'wcst_user',
 #                             'password' : 'password',
 #                             'database' : 'wcst',
 #                         }
+
+# Setting the cloud DB
+app.config['dbconfig'] = { 'host' : '34.89.233.160',
+                            'user' : 'root',
+                            'password' : 'password',
+                            'database' : 'wcst',
+                        }
 
 #Routing the opening page
 @app.route('/')
