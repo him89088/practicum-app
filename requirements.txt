@@ -5,5 +5,5 @@ Flask==1.1.1
 Flask-Session
 
 #MySQL Packages
-MySQL
 mysql-connector-python
+protobuf==3.6.1
