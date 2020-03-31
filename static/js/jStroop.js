@@ -2,6 +2,7 @@
 function startGame(){
   $("#dialogArea").hide();
   $("#endStroop").hide();
+  $("#dummyText").focus();
   let s = new Stroop(60, 'practice');
   jQuery(document).keyup(function(e) {
     s.getResponse(e);
