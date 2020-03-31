@@ -126,7 +126,7 @@ function game(){
         else //game over 
         {
             $("#game").hide();
-            alert("the game is over");
+            // alert("the game is over");
             $("#endigt").show(); 
             var i;
             
