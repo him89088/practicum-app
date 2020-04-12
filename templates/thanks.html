@@ -2,24 +2,41 @@
 
 {% block body %}
 <div class="container-fluid container-sm container-md container-lg container-xl heading2">
-    <div class = "row">
+    <div class="row">
         <div class="col">
             <h2 class="text-center text-sm-center text-md-center text-lg-center text-xl-center">{{ title }}</h2>
         </div>
     </div>
 </div>
 
-    <div class="container container-sm container-md container-lg container-xl heading2 end">
-        <div class = "row text-center ">
-            <div class="col">
-                <section>
-                    <p class="full block"> 
-                        Thanks for playing.
-                    </p>
-                </section>
-                <!-- <button type = "button" onclick="window.open('', '_parent', ''); window.close();" class="btn btn-outline-primary"> Finish</button> -->
-            </div>
+<div class="container container-sm container-md container-lg container-xl heading2 end">
+    <div class="row text-center ">
+        <div class="col">
+            <section>
+
+                <p class="full block" style="margin-bottom: 0px;">
+                    Further details on the project may be obtained from below:
+                    <ul style='list-style-type: none;'>
+                        <li>Himanshu Vashisht <a href="mailto:himanshu.vashisht2@mail.dcu.ie?Subject=App%20Queries"
+                                target="_top">
+                                <i class="material-icons">&#xe0be;</i></a>
+                        </li>
+                        <li>Alekhya Nethra <a href="mailto:alekhya.nethra2@mail.dcu.ie?Subject=App%20Queries"
+                                target="_top">
+                                <i class="material-icons">&#xe0be;</i></a>
+                        </li>
+                    </ul>
+                </p>
+            </section>
+            <br>
+            <br>
+            <section>
+                <p>
+                    You may close this window now.
+                </p>
+            </section>
+            <!-- <button type = "button" onclick="window.open('', '_parent', ''); window.close();" class="btn btn-outline-primary"> Finish</button> -->
         </div>
     </div>
-<script type="text/javascript" src="{{ url_for('static', filename='js/thanks.js') }}"></script>
+</div>
 {% endblock %}

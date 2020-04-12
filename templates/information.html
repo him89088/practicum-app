@@ -2,4 +2,99 @@
 
 {% block body %}
 
+
+<div class=" container-fluid container-sm container-md container-lg container-xl heading2">
+  <div class = "row">
+      <div class="col">
+          <h2 class="text-center text-sm-center text-md-center text-lg-center text-xl-center">{{ title }}</h2>
+      </div>
+  </div>
+</div>
+
+<div class="container container-sm container-md container-lg container-xl heading2">
+  <div class = "row text-center">
+      <div class="col" >
+        <form method="POST" >
+            <div id="result"></div> 
+            <div class="text-justify">
+                <div class="form-group">
+                    <label class="control-label col-sm-9">I understand all of the details outlined in the <a href="{{ url_for('pls') }}">Plain Language Statement</a>.</label>
+                    <div class="form-check-inline ">
+                        <label class="radio-inline "> <input type="radio" name="q1" id="q1Yes" value="Yes" required checked> Yes </label>
+                        <label class="radio-inline "> <input type="radio" name="q1" id="q1No" value="No" > No </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-9 control-label">I understand that participation in this study is completely voluntary and I am under no obligation to participate in this study.</label>
+                    <div class="form-check-inline">
+                        <label class="radio-inline"> <input type="radio" name="q2" id="q2Yes" value="Yes" required checked> Yes </label>
+                        <label class="radio-inline"> <input type="radio" name="q2" id="q2No" value="No" > No </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-9 control-label">I understand that I have the right to withdraw from this study at any time and I do not need to provide an explanation for doing so.</label>
+                    <div class="form-check-inline">
+                        <label class="radio-inline"> <input type="radio" name="q3" id="q3Yes" value="Yes"  required checked> Yes </label>
+                        <label class="radio-inline"> <input type="radio" name="q3" id="q3No" value="No" > No </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-9 control-label">I understand that information is being obtained for the purpose of a learning activity for the MSc programme in Data Analytics and the data collected may be published.</label>
+                    <div class="form-check-inline">
+                        <label class="radio-inline"> <input type="radio" name="q4" id="q4Yes" value="Yes" required checked> Yes </label>
+                        <label class="radio-inline"> <input type="radio" name="q4" id="q4No" value="No" > No </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-9 control-label">I am aware that I can also withdraw my data from the study should I feel the need to do so, until the point of submission.</label>
+                    <div class="form-check-inline">
+                        <label class="radio-inline"> <input type="radio" name="q5" id="q5Yes" value="Yes" required checked> Yes </label>
+                        <label class="radio-inline"> <input type="radio" name="q5" id="q5No" value="No" > No </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-9 control-label">I understand that all of the data collected will be kept confidential.</label>
+                    <div class="form-check-inline">
+                        <label class="radio-inline"> <input type="radio" name="q6" id="q6Yes" value="Yes" required checked> Yes </label>
+                        <label class="radio-inline"> <input type="radio" name="q6" id="q6No" value="No" > No </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-9 control-label">I understand that no identifying information will be collected in the course of the study.</label>
+                    <div class="form-check-inline">
+                        <label class="radio-inline"> <input type="radio" name="q7" id="q7Yes" value="Yes" required checked> Yes </label>
+                        <label class="radio-inline"> <input type="radio" name="q7" id="q7No" value="No" > No </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-9 control-label">I understand that I can contact any of the researchers listed above should I require any further information.</label>
+                    <div class="form-check-inline">
+                        <label class="radio-inline"> <input type="radio" name="q8" id="q8Yes" value="Yes" required checked> Yes </label>
+                        <label class="radio-inline"> <input type="radio" name="q8" id="q8No" value="No" > No </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-9 control-label">I am over the age of 18.</label>
+                    <div class="form-check-inline">
+                        <label class="radio-inline"> <input type="radio" name="q9" id="q9Yes" value="Yes" required checked> Yes </label>
+                        <label class="radio-inline"> <input type="radio" name="q9" id="q9No" value="No" > No </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-9 control-label">I consent to taking part in this study.</label>
+                    <div class="form-check-inline">
+                        <label class="radio-inline"> <input type="radio" name="q10" id="q10Yes" value="Yes" required checked> Yes </label>
+                        <label class="radio-inline"> <input type="radio" name="q10" id="q10No" value="No" > No </label>
+                    </div>
+                </div>
+            </div>
+            
+
+          <button type = "submit" class="btn btn-outline-primary" onclick="sendICF()"> Submit </button>
+        </form>
+
+      </div>
+  </div>
+</div>
+<script type="text/javascript" src="{{ url_for('static', filename='js/icf.js') }}"></script>
 {% endblock %}

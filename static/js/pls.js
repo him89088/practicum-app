@@ -1,6 +1,6 @@
-function redirectToPLS() {
+function redirectToInfo() {
     $.ajax({
-        url: "/pls",
+        url: "/information",
         type: 'POST',
         success: function (response) {
             var dbData = response.result;

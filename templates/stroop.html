@@ -2,51 +2,51 @@
 
 {% block body %}
 <div class="container-fluid container-sm container-md container-lg container-xl heading2">
-  <div class = "row text-center">
-      <div class="col">
-          <h2 class="text-center text-sm-center text-md-center text-lg-center text-xl-center">{{ title }}</h2>
-      </div>
-  </div>
+    <div class="row text-center">
+        <div class="col">
+            <h2 class="text-center text-sm-center text-md-center text-lg-center text-xl-center">{{ title }}</h2>
+        </div>
+    </div>
 </div>
-    
+
 <div id="dialogArea" class="container container-sm container-md container-lg container-xl">
-  <div class = "row text-center">
-      <div class="col ">
-          <p class="dialog full">You will see a series of words.<br>
+    <div class="row text-center">
+        <div class="col ">
+            <p class="dialog full">You will see a series of words.<br>
                 Select the colour the word is written in<br>
                 (not necessarily the word itself)<br>
                 by pressing:
-          </p>
-          <p id="key" class='dialog text-center full' >
-              &#8226 "r" for "red"<br>
-              &#8226 "g" for "green"<br>
-              &#8226 "b" for "blue"<br>
-              &#8226 "y" for "yellow"<br>
-          </p>
-          <p class='dialog full'>You will get points for speed and accuracy.</p>
-          <button onclick="startGame()" class="btn btn-outline-primary">Start</button>
-         
-      </div>
-      
-      </div>
-  </div>
+            </p>
+            <p id="key" class='dialog text-center full'>
+                &#8226 "r" for "red"<br>
+                &#8226 "g" for "green"<br>
+                &#8226 "b" for "blue"<br>
+                &#8226 "y" for "yellow"<br>
+            </p>
+            <p class='dialog full'>You will get points for speed and accuracy.</p>
+            <button onclick="startGame()" class="btn btn-outline-primary">Start</button>
 
-  <div id="centeredArea" class="container container-sm container-md container-lg container-xl">
-    <div class = "row text-center">
-        <div class="col "> 
-          <div id="stroop">
-            <p class="word"></p>
-            <input type="text" id="dummyText" style="width:0px; height:0px; opacity:0;" />
-          </div>
-      </div>
+        </div>
+
     </div>
-  </div>
-  <form id="endStroop" method="POST" style="display: none;">
+</div>
+
+<div id="centeredArea" class="container container-sm container-md container-lg container-xl">
+    <div class="row text-center">
+        <div class="col ">
+            <div id="stroop">
+                <p class="word"></p>
+                <input type="text" id="dummyText" style="width:0px; height:0px; opacity:0;" onfocusout="inputFocus()" />
+            </div>
+        </div>
+    </div>
+</div>
+<form id="endStroop" method="POST" style="display: none;">
     <div class="container container-sm container-md container-lg container-xl heading2 end">
-        <div class = "row text-center ">
+        <div class="row text-center ">
             <div class="col">
                 <section>
-                    <p class="full block"> 
+                    <p class="full block">
                         Thank you! Click Next for the next game.
                     </p>
                 </section>
@@ -57,5 +57,5 @@
 </form>
 
 
-  <script type="text/javascript" src="{{ url_for('static', filename='js/jStroop.js') }}"></script>
-  {% endblock %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/stroop.js') }}"></script>
+{% endblock %}

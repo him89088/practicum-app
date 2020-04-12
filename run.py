@@ -17,11 +17,12 @@ app.config.from_object(Config)
 #                         }
 
 # Setting the cloud DB
-app.config['dbconfig'] = { 'host' : '34.89.233.160',
-                            'user' : 'root',
-                            'password' : 'password',
-                            'database' : 'wcst',
+app.config['dbconfig'] = { 'host' : '34.77.245.137',
+                            'user' : 'practicum-user',
+                            'password' : 'Him@89088',
+                            'database' : 'practicum_db',
                         }
+
 
 #Routing the opening page
 @app.route('/')
@@ -29,15 +30,30 @@ def hello():
     session.permanent = True
     id = uuid.uuid4()
     # session['uid'] = str(request.remote_addr)
-    session['uid'] = str(id)[:8]
+    session['uid'] = str(id)[:8]+(str(request.remote_addr).replace('.',''))
+    print(session['uid'])
     return redirect(url_for(('disclaimer') ))
 
 #Disclaimer page
 @app.route('/disclaimer', methods=['GET','POST'])
 def disclaimer() -> 'html':
     if request.method == "POST":
+        return redirect(url_for(('pls')))
+    return  render_template('disclaimer.html', title='Welcome to our Decision Making research!')
+
+#Plain Language Statement
+@app.route('/pls', methods=['GET','POST'])
+def pls() -> 'html':
+    if request.method == "POST":
+        return redirect(url_for(('information')))
+    return  render_template('pls.html', title='Plain Language Statement')
+
+#Information Consent page
+@app.route('/information', methods=['GET','POST'])
+def information() -> 'html':
+    if request.method == "POST":
         return redirect(url_for(('survey')))
-    return  render_template('disclaimer.html', title='Disclaimer')
+    return  render_template('information.html', title='Informed Consent Form')
 
 #Survey Page
 @app.route('/survey', methods=['GET','POST'])
@@ -72,7 +88,7 @@ def igt_page() -> 'html':
 def finish() -> 'html':
     # if request.method == "POST":
     #     return redirect(url_for(('survey')))
-    return  render_template('thanks.html', title='Finish')
+    return  render_template('thanks.html', title='Thanks for participating')
 
 #Inserting WCST Records
 @app.route('/insert', methods=['GET','POST'])
@@ -86,12 +102,39 @@ def insert():
                 key_pressed = rows['key_pressed']
                 outcome = rows['outcome']
                 reaction_time = rows['reaction_time']
-                _SQL = """insert into test
+                _SQL = """insert into wcst
                         (user, key_pressed, outcome, reaction_time) 
                         values
                         (%s, %s, %s, %s)"""
                 cursor.execute(_SQL,(userid, key_pressed, outcome, reaction_time))
         return "Data Inserted"
+
+#Inserting Survey Records
+@app.route('/insert_icf', methods=['GET','POST'])
+def insert_icf():
+    with UseDatabase(app.config['dbconfig']) as cursor:
+        if request.method == "POST":
+            req_data = request.get_json()
+            userid = str(session['uid'])
+            print('user : ' + userid)
+            for rows in req_data:
+                q1 = rows['q1']
+                q2 = rows['q2']
+                q3 = rows['q3']
+                q4 = rows['q4']
+                q5 = rows['q5']
+                q6 = rows['q6']
+                q7 = rows['q7']
+                q8 = rows['q8']
+                q9 = rows['q9']
+                q10 = rows['q10']
+                _SQL = """insert into icf
+                        (user, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) 
+                        values
+                        (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+                cursor.execute(_SQL,(userid, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10))
+        return "Data Inserted"
+
 
 #Inserting Survey Records
 @app.route('/insert_survey', methods=['GET','POST'])
@@ -144,7 +187,6 @@ def insert_igt():
             userid = str(session['uid'])
             print('user : ' + userid)
             for rows in req_data:
-                print(rows)
                 choice = rows['selected']
                 gain = rows['profit']
                 loss = rows['loss']

@@ -2,23 +2,28 @@
 
 {% block body %}
 <div class="container-fluid container-sm container-md container-lg container-xl heading2">
-    <div class = "row">
+    <div class="row">
         <div class="col">
             <h2 class="text-center text-sm-center text-md-center text-lg-center text-xl-center">{{ title }}</h2>
         </div>
     </div>
 </div>
 
-<form method="POST" >
+<form method="POST">
     <div class="container container-sm container-md container-lg container-xl heading2 end">
-        <div class = "row text-center ">
+        <div class="row text-center ">
             <div class="col">
-                <section>
-                    <p class="full block"> 
-                        BLAH BLAH BLAH!!
+                <section class="text-center block">
+                    <p class="full block">
+                        <br><br> In this research, you will be asked to provide your basic information (i.e.
+                        gender, age, and pain level), and then play three games. The whole process will take you around
+                        20 minutes. <br><br>
+                        Please note this research is totally <b>anonymous</b> and do not press back or exit out of the
+                        website once the game has started. <br> <br>
+                        Please click the <b>Continue</b> below to continue.
                     </p>
                 </section>
-                <button type = "submit" onclick="redirectToSurevy()" class="btn btn-outline-primary"> I Agree </button>
+                <button type="submit" onclick="redirectToPLS()" class="btn btn-outline-primary"> Continue </button>
             </div>
         </div>
     </div>

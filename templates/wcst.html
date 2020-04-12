@@ -2,7 +2,7 @@
 
 {% block body %}
 <div class="container-fluid container-sm container-md container-lg container-xl heading2">
-    <div class = "row">
+    <div class="row">
         <div class="col">
             <h2 class="text-center text-sm-center text-md-center text-lg-center text-xl-center">{{ title }}</h2>
         </div>
@@ -10,23 +10,27 @@
 </div>
 
 <div id="WCSTinstructions" class="container container-sm container-md container-lg container-xl">
-    <div class = "row">
+    <div class="row">
         <div class="col ">
-            <section class = "text-justify block">
+            <section class="text-justify block">
                 <p class="full">
-                    You are given two decks of cards, each containing 64 cards. Your task is to sort these cards into 4 different
-                    piles. The correct answer depends upon a rule, but you will not know what the rule is. We will tell you on
-                    each trial whether you were correct. When you put the card into the correct pile, the word "correct" will
-                    appear on the screen. And when you put the card into the wrong pile, the word "wrong" will appear. The goal
+                    You are given two decks of cards, each containing 64 cards. Your task is to sort these cards into 4
+                    different
+                    piles. The correct answer depends upon a rule, but you will not know what the rule is. We will tell
+                    you on
+                    each trial whether you were correct. When you put the card into the correct pile, the word "correct"
+                    will
+                    appear on the screen. And when you put the card into the wrong pile, the word "wrong" will appear.
+                    The goal
                     is to get as many cards into the "correct" pile as possible. Use your mouse to make a selection.
                 </p>
             </section>
-            <section class = "block text-center">
+            <section class="block text-center">
                 <p class=" full">
-                    Click here to begin. 
+                    Click here to begin.
                 </p>
-                <button type = "button" onclick="WCSTstateTransitionToGame()" class="btn btn-outline-primary"> 
-                    Enter 
+                <button type="button" onclick="WCSTstateTransitionToGame()" class="btn btn-outline-primary">
+                    Enter
                 </button>
             </section>
         </div>
@@ -35,28 +39,30 @@
 
 <!-- (number, shape, color) -->
 <div id="WCSTkeyCards" class="container container-sm container-md container-lg container-xl heading2">
-    <div class = "row text-center ">
+    <div class="row text-center ">
         <div class="col">
             <img class="KeyCards" src="static/img/111.jpg" onClick="WCSTcardPressed(1);"> <!-- card: 1 circle red -->
         </div>
-        <div class="col">   
-            <img class="KeyCards" src="static/img/222.jpg" onClick="WCSTcardPressed(2);"> <!-- card: 2 diamonds green -->
+        <div class="col">
+            <img class="KeyCards" src="static/img/222.jpg" onClick="WCSTcardPressed(2);">
+            <!-- card: 2 diamonds green -->
         </div>
-        <div class="col">   
+        <div class="col">
             <img class="KeyCards" src="static/img/333.jpg" onClick="WCSTcardPressed(3);"> <!-- card: 3 stars blue -->
-        </div> 
-        <div class="col">   
-            <img class="KeyCards" src="static/img/444.jpg" onClick="WCSTcardPressed(4);"> <!-- card: 4 triangles yelow -->
+        </div>
+        <div class="col">
+            <img class="KeyCards" src="static/img/444.jpg" onClick="WCSTcardPressed(4);">
+            <!-- card: 4 triangles yelow -->
         </div>
     </div>
 </div>
 
 <div id="WCSTgameInstructions" class="container container-sm container-md container-lg container-xl heading2">
-    <div class = "row text-center ">
+    <div class="row text-center ">
         <div class="col">
             <section>
-                <p class="full block"> 
-                    Click on deck to sort card: 
+                <p class="full block">
+                    Click on deck to sort card:
                 </p>
                 <!-- The showing the response card here (the cards that needs to be sorted to one of the four piles) -->
                 <img src="blank.png" id="WCSTresponseCard" alt="just nothing" />
@@ -70,12 +76,12 @@
 </div>
 
 
-<form id="WCSTendInstructions" method="POST" >
+<form id="WCSTendInstructions" method="POST">
     <div class="container container-sm container-md container-lg container-xl heading2 end">
-        <div class = "row text-center ">
+        <div class="row text-center ">
             <div class="col">
                 <section>
-                    <p class="full block"> 
+                    <p class="full block">
                         Thank you! Click Next for the next game.
                     </p>
                 </section>

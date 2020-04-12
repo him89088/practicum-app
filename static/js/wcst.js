@@ -3,7 +3,7 @@
 // so we have 4X4X4=64 cards in a deck.
 // The cards names are XXX=>number,shape,color - for example card name 234 is a card with 2 stars that are yellow. 
 
-var cards = [234, 423, 244, 314, 134, 133, 242, 213, 414, 124, 324, 343, 334, 434, 223, 422, 131, 432, 241, 412, 323, 344, 413, 243, 331, 411, 341, 132, 112, 214, 111, 312, 311, 342, 141, 322, 441, 222, 123, 211, 421, 424, 431, 233, 122, 232, 333, 433, 442, 113, 212, 114, 224, 444, 221, 321, 231, 121, 143, 144, 332, 142, 443, 313  ]//, 234, 423, 244, 314, 134, 133, 242, 213, 414, 124, 324, 343, 334, 434, 223, 422, 131, 432, 241, 412, 323, 344, 413, 243, 331, 411, 341, 132, 112, 214, 111, 312, 311, 342, 141, 322, 441, 222, 123, 211, 421, 424, 431, 233, 122, 232, 333, 433, 442, 113, 212, 114, 224, 444, 221, 321, 231, 121, 143, 144, 332, 142, 443, 313];
+var cards = [234, 423, 244, 314, 134, 133, 242, 213, 414, 124, 324, 343, 334, 434, 223, 422, 131, 432, 241, 412, 323, 344, 413, 243, 331, 411, 341, 132, 112, 214, 111, 312, 311, 342, 141, 322, 441, 222, 123, 211, 421, 424, 431, 233, 122, 232, 333, 433, 442, 113, 212, 114, 224, 444, 221, 321, 231, 121, 143, 144, 332, 142, 443, 313]//, 234, 423, 244, 314, 134, 133, 242, 213, 414, 124, 324, 343, 334, 434, 223, 422, 131, 432, 241, 412, 323, 344, 413, 243, 331, 411, 341, 132, 112, 214, 111, 312, 311, 342, 141, 322, 441, 222, 123, 211, 421, 424, 431, 233, 122, 232, 333, 433, 442, 113, 212, 114, 224, 444, 221, 321, 231, 121, 143, 144, 332, 142, 443, 313];
 // var cards = [234, 423, 244, 314, 134, 133, 242, 213, 414, 124]//, 324, 343, 334, 434, 223, 422, 131, 432, 241, 412, 323, 344, 413, 243, 331, 411, 341, 132, 112, 214, 111, 312, 311, 342, 141, 322, 441, 222, 123, 211, 421, 424, 431, 233, 122, 232, 333, 433, 442, 113, 212, 114, 224, 444, 221, 321, 231, 121, 143, 144, 332, 142, 443, 313, 234, 423, 244, 314, 134, 133, 242, 213, 414, 124, 324, 343, 334, 434, 223, 422, 131, 432, 241, 412, 323, 344, 413, 243, 331, 411, 341, 132, 112, 214, 111, 312, 311, 342, 141, 322, 441, 222, 123, 211, 421, 424, 431, 233, 122, 232, 333, 433, 442, 113, 212, 114, 224, 444, 221, 321, 231, 121, 143, 144, 332, 142, 443, 313];
 
 var classificationPrinceple = 0;	//Classification principle 0=>by_count 1=>by_shape 2=>by+color
@@ -14,7 +14,7 @@ var totalWrong = 0;					//WCST tests the total amount of wrong answers the parti
 var totalRepeatedWrong = 0; 		//WCST tests the total amount of wrong answers that the type of mistake was exactly like the mistake from the privious trial.
 var previousTrialWrongType = -1;	//For this we always need to know if last trial was a wrong (error) and the type of error. -1 means right.
 var currentTrialWrongType = -2;		//And we need the type of error in the current trial to compare to last trial. -2 is right (correct response).
-                                    //The error types can be 0/1/2  -  0=>sorted_by_count 1=>by_shape 2=>by_color
+//The error types can be 0/1/2  -  0=>sorted_by_count 1=>by_shape 2=>by_color
 var isKeyPressed = 0;				//Tracks the keypress for each card so players won't press out of time
 
 var startTime;
@@ -111,7 +111,7 @@ function WCSTgameKeyPressed(code) {
             $("#WCSTresponseCard").show();
             isKeyPressed = 0;
             startTime = Date.now();
-        }, 1500);
+        }, 1000);
 
     } else {
         state = 'WCSTEnd';
@@ -127,7 +127,7 @@ function WCSTgameKeyPressed(code) {
 }
 
 function WCSTdisplayRight() {
-    $('#WCSTright').show().delay(1000).hide(1);
+    $('#WCSTright').show().delay(800).hide(1);
     countRight++;
     previousTrialWrongType = -1;
     currentTrialWrongType = -2;
@@ -135,7 +135,7 @@ function WCSTdisplayRight() {
 }
 
 function WCSTdisplayWrong() {
-    $('#WCSTwrong').show().delay(1000).hide(1);
+    $('#WCSTwrong').show().delay(800).hide(1);
     countRight = 0;
     totalWrong++;
     correctness = 0;
@@ -145,7 +145,7 @@ function WCSTlogKeyPressed(code, correct) {
     var key_pressed = code;
     var reaction_time = (Date.now() - startTime);
     var correct = correct;
-    
+
     var jsdata = {}
 
     jsdata["key_pressed"] = key_pressed;
@@ -168,10 +168,10 @@ function WCSTstateTransitionToEnd() {		//At this state only the end instructions
     }, 1000);
 }
 
-function sendJson(){ 
+function sendJson() {
     $.ajax({
-        url: "/insert", 
-        data: JSON.stringify(jsondata), 
+        url: "/insert",
+        data: JSON.stringify(jsondata),
         type: 'POST',
         contentType: 'application/json;charset=UTF-8',
         dataType: 'json',

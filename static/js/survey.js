@@ -1,5 +1,5 @@
-$(window).bind("pageshow", function() {
-    var form = $('form'); 
+$(window).bind("pageshow", function () {
+    var form = $('form');
     // let the browser natively reset defaults
     form[0].reset();
 });
@@ -9,12 +9,12 @@ var age;
 var pain = 0;
 var surveyData = []
 
-function doThis(num){
+function doThis(num) {
     pain = num;
     getdata(pain);
 }
 
-function getdata(pain){
+function getdata(pain) {
     gender = $('#gender option:selected').text();
     age = $('#age option:selected').text();
     pain = pain;
@@ -28,13 +28,13 @@ function json(gender, age, pain) {
     survey["age"] = age;
     survey["pain"] = pain;
     surveyData.push(survey);
-    console.log("JSONify "+JSON.stringify(surveyData));
+    console.log("JSONify " + JSON.stringify(surveyData));
 }
 
-function sendSurvey(){
+function sendSurvey() {
     $.ajax({
-        url: "/insert_survey", 
-        data: JSON.stringify(surveyData), 
+        url: "/insert_survey",
+        data: JSON.stringify(surveyData),
         //data: surveyData, 
         type: 'POST',
         contentType: 'application/json;charset=UTF-8',
