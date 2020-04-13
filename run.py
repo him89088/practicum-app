@@ -17,9 +17,9 @@ app.config.from_object(Config)
 #                         }
 
 # Setting the cloud DB
-app.config['dbconfig'] = { 'host' : '34.77.245.137',
+app.config['dbconfig'] = { 'host' : 'xxxxxxxxxx',
                             'user' : 'practicum-user',
-                            'password' : 'Him@89088',
+                            'password' : 'xxxxxxxxx',
                             'database' : 'practicum_db',
                         }
 
