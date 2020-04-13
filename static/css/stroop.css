@@ -18,3 +18,17 @@
   /* font-size: 150%; */
 }
 
+div.btn-keys > .btn-outline-primary{
+  color:#000000;
+  border-color:#000000;
+}
+
+div.btn-keys > .btn-outline-primary:hover{
+  color: white;
+}
+
+div.btn-keys > .btn-outline-primary:not(:disabled):not(.disabled):active{
+  color: white;
+  border-color:#000000;
+  background-color: white;
+}

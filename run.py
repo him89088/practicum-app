@@ -39,56 +39,56 @@ def hello():
 def disclaimer() -> 'html':
     if request.method == "POST":
         return redirect(url_for(('pls')))
-    return  render_template('disclaimer.html', title='Welcome to our Decision Making research!')
+    return  render_template('disclaimer.html', title='Welcome to our Decision Making research!', user=session['uid'])
 
 #Plain Language Statement
 @app.route('/pls', methods=['GET','POST'])
 def pls() -> 'html':
     if request.method == "POST":
         return redirect(url_for(('information')))
-    return  render_template('pls.html', title='Plain Language Statement')
+    return  render_template('pls.html', title='Plain Language Statement', user=session['uid'])
 
 #Information Consent page
 @app.route('/information', methods=['GET','POST'])
 def information() -> 'html':
     if request.method == "POST":
         return redirect(url_for(('survey')))
-    return  render_template('information.html', title='Informed Consent Form')
+    return  render_template('information.html', title='Informed Consent Form', user=session['uid'])
 
 #Survey Page
 @app.route('/survey', methods=['GET','POST'])
 def survey() -> 'html':
     if request.method == "POST":
         return redirect(url_for(('wcst_page')))
-    return  render_template('survey.html', title='Survey')
+    return  render_template('survey.html', title='Survey', user=session['uid'])
 
 # WCST Page
 @app.route('/wcst', methods=['GET','POST'])
 def wcst_page() -> 'html':
     if request.method == "POST":
         return redirect(url_for(('stroop_page')))
-    return  render_template('wcst.html', title='Wisconsin Card Sorting Game')
+    return  render_template('wcst.html', title='Wisconsin Card Sorting Game', user=session['uid'])
 
 # Stroop Page
 @app.route('/stroop', methods=['GET','POST'])
 def stroop_page() -> 'html':
     if request.method == "POST":
         return redirect(url_for(('igt_page')))
-    return  render_template('stroop.html', title='Stroop Task')
+    return  render_template('stroop.html', title='Stroop Task', user=session['uid'])
 
 # IGT Page
 @app.route('/igt', methods=['GET','POST'])
 def igt_page() -> 'html':
     if request.method == "POST":
         return redirect(url_for(('finish')))
-    return  render_template('igt.html', title='Iowa Gambling Task')
+    return  render_template('igt.html', title='Iowa Gambling Task', user=session['uid'])
 
 #Thanks
 @app.route('/finish', methods=['GET','POST'])
 def finish() -> 'html':
     # if request.method == "POST":
     #     return redirect(url_for(('survey')))
-    return  render_template('thanks.html', title='Thanks for participating')
+    return  render_template('thanks.html', title='Tasks Completed', user=session['uid'] )
 
 #Inserting WCST Records
 @app.route('/insert', methods=['GET','POST'])
@@ -228,4 +228,4 @@ def view_igt() -> 'html':
 
 # Running the app
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')

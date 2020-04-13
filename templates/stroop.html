@@ -5,6 +5,9 @@
     <div class="row text-center">
         <div class="col">
             <h2 class="text-center text-sm-center text-md-center text-lg-center text-xl-center">{{ title }}</h2>
+            <p class='float text-center'>
+                User: {{user}}
+            </p>
         </div>
     </div>
 </div>
@@ -36,7 +39,14 @@
         <div class="col ">
             <div id="stroop">
                 <p class="word"></p>
-                <input type="text" id="dummyText" style="width:0px; height:0px; opacity:0;" onfocusout="inputFocus()" />
+                <div class='btn-keys' style="display: none;">
+                    <br>
+                    <br>
+                    <button class="btn btn-outline-primary" name='r' value='r'>Red</button>
+                    <button class="btn btn-outline-primary" name='g' value='g'>Green</button>
+                    <button class="btn btn-outline-primary" name='y' value='y'>Yellow</button>
+                    <button class="btn btn-outline-primary" name='b' value='b'>Blue</button>
+                </div>
             </div>
         </div>
     </div>

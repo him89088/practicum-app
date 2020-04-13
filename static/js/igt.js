@@ -150,7 +150,13 @@ function sendIGT() {
         data: res,
         type: 'POST',
         contentType: 'application/json;charset=UTF-8',
-        dataType: 'json',
+        dataType: 'jsonp',
+        cache: false,
+        async:false,
+        headers:{
+            'cache-control':'no-cache',
+            "Access-Control-Allow-Origin":"*"
+        },
         success: function (response) {
             var dbData = response.result;
             console.log("Success" + dbData)

@@ -1,16 +1,16 @@
-function inputFocus() {
-  $("#dummyText").focus();
-}
 
 function startGame() {
   $("#dialogArea").hide();
   $("#endStroop").hide();
-  $("#dummyText").focus();
+
   let s = new Stroop(100, 'practice');
-  jQuery(document).keyup(function (e) {
+  $("button").click(function() {
+    var e = $(this).val();
+    console.log(e);
     s.getResponse(e);
   });
   s.start();
+ 
 }
 
 class Stroop {
@@ -20,7 +20,7 @@ class Stroop {
       '#FF0000', // red
       '#00FF00', // green
       '#0000FF', // blue
-      '#FFFF00', // yellow
+      '#FFF200', // yellow
     ];
     this.colorKey = [
       'red', 'green', 'blue', 'yellow'
@@ -106,7 +106,9 @@ class Stroop {
     console.log("Stroop is starting");
     setTimeout(function () {
       self.next();
+      $(".btn-keys").show();
     }, 3000);
+  
   }
 
   next() {
@@ -131,11 +133,11 @@ class Stroop {
   getResponse(e) {
     let correct;
     self = this;
-    if (this.validKeys.includes(e.key) && this.acceptInput) {
+    if (this.validKeys.includes(e) && this.acceptInput) {
       clearTimeout(this.autoAdvance);
-      if (this.validKeys.indexOf(e.key) == this.currentColor) {
+      if (this.validKeys.indexOf(e) == this.currentColor) {
         correct = true;
-        this.newResponse(e.key, correct);
+        this.newResponse(e, correct);
         this.next();
       }
       else {
@@ -145,7 +147,7 @@ class Stroop {
         setTimeout(function () {
           self.next();
         }, 1500);
-        this.newResponse(e.key, correct);
+        this.newResponse(e, correct);
       }
     }
   }
@@ -207,6 +209,7 @@ class Stroop {
   end() {
     let results = JSON.stringify(this.responses);
     $("#stroop").hide();
+    $('.btn-keys').hide();
     $("#endStroop").show();
     setValues(results);
     console.log(results);
@@ -224,7 +227,13 @@ function con() {
     data: result_out,
     type: 'POST',
     contentType: 'application/json;charset=UTF-8',
-    dataType: 'json',
+    dataType: 'jsonp',
+    cache: false,
+    async:false,
+    headers:{
+        'cache-control':'no-cache',
+        "Access-Control-Allow-Origin":"*"
+    },
     success: function (response) {
       var dbData = response.result;
       console.log("Success" + dbData)

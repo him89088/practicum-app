@@ -9,17 +9,17 @@ label.radio-inline{
 
 @media (min-width:319px)  { 
     .form-group{
-        font-size: 50%;
+        font-size: 60%;
     }
 }
 @media (min-width:401px)  { 
     f.form-group{
-        font-size: 60%;
+        font-size: 70%;
     }
 }
 @media (min-width:641px)  { 
     .form-group{
-        font-size: 75%;
+        font-size: 80%;
     }
 }
 /* @media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ 
@@ -32,7 +32,7 @@ label.radio-inline{
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
 @media (min-width: 768px) {  
     .form-group{
-        font-size: 80%;
+        font-size: 90%;
     }
 }
  
