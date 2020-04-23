@@ -1,29 +1,30 @@
 {% extends 'base.html' %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/survey.css') }}">
+{% endblock %}
+
 {% block body %}
-
-
 <div class=" container-fluid container-sm container-md container-lg container-xl heading2">
   <div class="row">
     <div class="col">
       <h2 class="text-center text-sm-center text-md-center text-lg-center text-xl-center">{{ title }}</h2>
       <p class='float text-center'>
         User: {{user}}
-    </p>
+      </p>
     </div>
   </div>
 </div>
 
-<div class="container-fluid container-sm container-md container-lg container-xl heading2">
+<div class="container container-sm container-md container-lg container-xl heading2">
   <div class="row text-center">
-    <div class="col">
-
-      <form method="POST">
+    <form method="POST">
+      <div class="col">
         <div class="form-group">
-          <p class="full">
-            What is your gender?
+          <p class="full"><b>
+              What is your gender?</b>
           </p>
-          <select id="gender" name="gender" required class="drop">
+          <select id="gender" name="gender" required class="drop" class='text-center'>
             <option disabled selected value>Select an option</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
@@ -33,83 +34,824 @@
 
         <div class="form-group">
           <p class="full">
-            What is your age?
+            <b> What is your age?</b>
           </p>
-          <select id="age" name="age" required class="drop">
-            <option disabled selected value>Select an option</option>
-            <option value="Less than 26">Less than 26</option>
-            <option value="26-30">26-30</option>
-            <option value="31-35">31-35</option>
-            <option value="36-40">36-40</option>
-            <option value="41-45">41-45</option>
-            <option value="46-50">46-50</option>
-            <option value="51-55">51-55</option>
-            <option value="56-60">56-60</option>
-            <option value="61-65">61-65</option>
-            <option value="More than 65">More than 65</option>
-          </select>
+          <input type='number' placeholder="Enter your age" id='age-text' min="18" max="100" required
+            class='text-center'>
         </div>
 
         <div class="form-group">
           <p class="full">
-            How much pain are you in right now? (1=minimum, 10=maximum)
+            <b> How long have you been in pain (in months)?</b>
           </p>
-          <div class="form-check-inline">
-            <label class="form-check-label">
-              <input type="radio" name="pain" value="1" required > 1 </input>
-            </label>
-          </div>
-          <div class="form-check-inline">
-            <label class="form-check-label">
-              <input type="radio" name="pain" value="2" > 2 </input>
-            </label>
-          </div>
-          <div class="form-check-inline">
-            <label class="form-check-label">
-              <input type="radio" name="pain" value="3" > 3 </input>
-            </label>
-          </div>
-          <div class="form-check-inline">
-            <label class="form-check-label">
-              <input type="radio" name="pain" value="4" > 4 </input>
-            </label>
-          </div>
-          <div class="form-check-inline">
-            <label class="form-check-label">
-              <input type="radio" name="pain" value="5" > 5 </input>
-            </label>
-          </div>
-          <div class="form-check-inline">
-            <label class="form-check-label">
-              <input type="radio" name="pain" value="6" > 6 </input>
-            </label>
-          </div>
-          <div class="form-check-inline">
-            <label class="form-check-label">
-              <input type="radio" name="pain" value="7" > 7 </input>
-            </label>
-          </div>
-          <div class="form-check-inline">
-            <label class="form-check-label">
-              <input type="radio" name="pain" value="8" > 8 </input>
-            </label>
-          </div>
-          <div class="form-check-inline">
-            <label class="form-check-label">
-              <input type="radio" name="pain" value="9" > 9 </input>
-            </label>
-          </div>
-          <div class="form-check-inline">
-            <label class="form-check-label">
-              <input type="radio" name="pain" value="10" > 10 </input>
-            </label>
-          </div>
+          <input type='number' placeholder="Enter the duration" min='0' required id='pain-text' class='text-center'>
         </div>
-        <button type="submit" class="btn btn-outline-primary" onclick="getData()"> Submit </button>
-      </form>
+      </div>
 
-    </div>
+      <div class="row text-justify">
+        <div class="col-2">
+        </div>
+        <div class="col-8">
+          <div class="form-group questions">
+            <br>
+            <p class="full">
+              <b>Throughout our lives, most of us have had pain from time to time (such as minor headaches, sprains, and
+                toothaches). Have you had pain other than these everyday kinds of pain today?</b>
+            </p>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q1" name="q1" value="Yes" required> Yes </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q1" name="q1" value="No"> No </input>
+              </label>
+            </div>
+          </div>
+          <br>
+
+          <div class="form-group questions">
+            <p class="full">
+              <b>Please rate your pain by marking the box beside the number that best describes your pain at its <span  style="color:#3399ff">worst</span>
+                in the last 24 hours. <i> (0: No Pain, 10: Pain as bad as it gets)</i></b>
+            </p>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q2" name="q2" value="0" required> 0 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q2" name="q2" value="1"> 1 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q2" name="q2" value="2"> 2 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q2" name="q2" value="3"> 3 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q2" name="q2" value="4"> 4 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q2" name="q2" value="5"> 5 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q2" name="q2" value="6"> 6 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q2" name="q2" value="7"> 7 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q2" name="q2" value="8"> 8 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q2" name="q2" value="9"> 9 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q2" name="q2" value="10"> 10 </input>
+              </label>
+            </div>
+          </div>
+
+          <br>
+
+          <div class="form-group questions">
+            <p class="full">
+              <b> Please rate your pain by marking the box beside the number that best describes your pain at its
+                <span  style="color:#3399ff">least</span> in the last 24 hours. <i> (0: No Pain, 10: Pain as bad as it gets)</i></b>
+            </p>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q3" name="q3" value="0" required> 0 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q3" name="q3" value="1"> 1 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q3" name="q3" value="2"> 2 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q3" name="q3" value="3"> 3 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q3" name="q3" value="4"> 4 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q3" name="q3" value="5"> 5 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q3" name="q3" value="6"> 6 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q3" name="q3" value="7"> 7 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q3" name="q3" value="8"> 8 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q3" name="q3" value="9"> 9 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q3" name="q3" value="10"> 10 </input>
+              </label>
+            </div>
+          </div>
+          <br>
+
+          <div class="form-group questions">
+            <p class="full">
+              <b> Please rate your pain by marking the box beside the number that best describes your pain on the
+                <span  style="color:#3399ff">average</span>
+               <i> (0: No Pain, 10: Pain as bad as it gets)</i> </b>
+            </p>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q4" name="q4" value="0" required> 0 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q4" name="q4" value="1"> 1 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q4" name="q4" value="2"> 2 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q4" name="q4" value="3"> 3 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q4" name="q4" value="4"> 4 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q4" name="q4" value="5"> 5 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q4" name="q4" value="6"> 6 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q4" name="q4" value="7"> 7 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q4" name="q4" value="8"> 8 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q4" name="q4" value="9"> 9 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q4" name="q4" value="10"> 10 </input>
+              </label>
+            </div>
+          </div>
+          <br>
+
+          <div class="form-group questions">
+            <p class="full">
+              <b> Please rate your pain by marking the box beside the number that tells how much pain you have 
+                <span  style="color:#3399ff">right now</span>
+                <i> (0: No Pain, 10: Pain as bad as it gets)</i></b>
+            </p>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q5" name="q5" value="0" required> 0 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q5" name="q5" value="1"> 1 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q5" name="q5" value="2"> 2 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q5" name="q5" value="3"> 3 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q5" name="q5" value="4"> 4 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q5" name="q5" value="5"> 5 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q5" name="q5" value="6"> 6 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q5" name="q5" value="7"> 7 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q5" name="q5" value="8"> 8 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q5" name="q5" value="9"> 9 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q5" name="q5" value="10"> 10 </input>
+              </label>
+            </div>
+          </div>
+
+          <br>
+
+          <div class="form-group">
+            <p class="full">
+              <b> What treatments or medications are you receiving for your pain?</b>
+            </p>
+            <textarea class="textarea form-control" required id='med-text' rows="1"
+              placeholder="Treatment/Medications (if any)"></textarea>
+          </div>
+          <br>
+
+          <div class="form-group questions">
+            <p class="full">
+              <b> In the last 24 hours, how much relief have pain treatments or medications provided? Please
+                mark the box below the percentage that most shows how much <span  style="color:#3399ff">relief</span> you have received.
+                <i>(0%: No Relief, 100%: Complete Relief) </i></b>
+            </p>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q6" name="q6" value="0" required> 0 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q6" name="q6" value="10" required> 10% </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q6" name="q6" value="20"> 20% </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q6" name="q6" value="30"> 30% </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q6" name="q6" value="40"> 40 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q6" name="q6" value="50"> 50% </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q6" name="q6" value="60"> 60% </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q6" name="q6" value="70"> 70% </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q6" name="q6" value="80"> 80% </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q6" name="q6" value="90"> 90% </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q6" name="q6" value="100"> 100% </input>
+              </label>
+            </div>
+          </div>
+          <br>
+
+          <p>
+            <b> Mark the box beside the number that describes how, during the past 24 hours, pain has interfered
+              with your:</b>
+          </p>
+
+          <div class="form-group questions">
+            <p class="full">
+              <b> A. General Activity <i> (0: Does not interfere, 10: Completely interferes)</i></b>
+            </p>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q7" name="q7" value="0" required> 0 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q7" name="q7" value="1" required> 1 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q7" name="q7" value="2"> 2 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q7" name="q7" value="3"> 3 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q7" name="q7" value="4"> 4 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q7" name="q7" value="5"> 5 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q7" name="q7" value="6"> 6 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q7" name="q7" value="7"> 7 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q7" name="q7" value="8"> 8 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q7" name="q7" value="9"> 9 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q7" name="q7" value="10"> 10 </input>
+              </label>
+            </div>
+          </div>
+          <br>
+
+          <div class="form-group questions">
+            <p class="full">
+              <b> B. Mood <i> (0: Does not interfere, 10: Completely interferes)</i></b>
+            </p>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q8" name="q8" value="0" required> 0 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q8" name="q8" value="1" required> 1 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q8" name="q8" value="2"> 2 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q8" name="q8" value="3"> 3 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q8" name="q8" value="4"> 4 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q8" name="q8" value="5"> 5 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q8" name="q8" value="6"> 6 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q8" name="q8" value="7"> 7 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q8" name="q8" value="8"> 8 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q8" name="q8" value="9"> 9 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q8" name="q8" value="10"> 10 </input>
+              </label>
+            </div>
+          </div>
+          <br>
+
+          <div class="form-group questions">
+            <p class="full">
+              <b> C. Walking Ability <i> (0: Does not interfere, 10: Completely interferes)</i></b>
+            </p>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q9" name="q9" value="0" required> 0 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q9" name="q9" value="1" required> 1 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q9" name="q9" value="2"> 2 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q9" name="q9" value="3"> 3 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q9" name="q9" value="4"> 4 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q9" name="q9" value="5"> 5 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q9" name="q9" value="6"> 6 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q9" name="q9" value="7"> 7 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q9" name="q9" value="8"> 8 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q9" name="q9" value="9"> 9 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q9" name="q9" value="10"> 10 </input>
+              </label>
+            </div>
+          </div>
+          <br>
+
+          <div class="form-group questions">
+            <p class="full">
+              <b> D. Normal Work (includes both work outside the home and housework) <i> (0: Does not interfere, 10: Completely interferes)</i></b>
+            </p>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q10" name="q10" value="0" required> 0 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q10" name="q10" value="1" required> 1 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q10" name="q10" value="2"> 2 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q10" name="q10" value="3"> 3 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q10" name="q10" value="4"> 4 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q10" name="q10" value="5"> 5 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q10" name="q10" value="6"> 6 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q10" name="q10" value="7"> 7 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q10" name="q10" value="8"> 8 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q10" name="q10" value="9"> 9 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q10" name="q10" value="10"> 10 </input>
+              </label>
+            </div>
+          </div>
+          <br>
+
+          <div class="form-group questions">
+            <p class="full">
+              <b> E. Relations with other people <i> (0: Does not interfere, 10: Completely interferes)</i></b>
+            </p>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q11" name="q11" value="0" required> 0 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q11" name="q11" value="1" required> 1 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q11" name="q11" value="2"> 2 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q11" name="q11" value="3"> 3 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q11" name="q11" value="4"> 4 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q11" name="q11" value="5"> 5 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q11" name="q11" value="6"> 6 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q11" name="q11" value="7"> 7 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q11" name="q11" value="8"> 8 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q11" name="q11" value="9"> 9 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q11" name="q11" value="10"> 10 </input>
+              </label>
+            </div>
+          </div>
+          <br>
+
+          <div class="form-group questions">
+            <p class="full">
+              <b> F. Sleep <i> (0: Does not interfere, 10: Completely interferes)</i></b>
+            </p>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q12" name="q12" name="pain" value="0" required> 0 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q12" name="q12" value="1" required> 1 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q12" name="q12" value="2"> 2 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q12" name="q12" value="3"> 3 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q12" name="q12" value="4"> 4 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q12" name="q12" value="5"> 5 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q12" name="q12" value="6"> 6 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q12" name="q12" value="7"> 7 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q12" name="q12" value="8"> 8 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q12" name="q12" value="9"> 9 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q12" name="q12" value="10"> 10 </input>
+              </label>
+            </div>
+          </div>
+          <br>
+
+          <div class="form-group questions">
+            <p class="full">
+              <b> G. Enjoyment of Life <i> (0: Does not interfere, 10: Completely interferes)</i></b>
+            </p>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q13" name="q13" value="0" required> 0 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q13" name="q13" value="1" required> 1 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q13" name="q13" value="2"> 2 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q13" name="q13" value="3"> 3 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q13" name="q13" value="4"> 4 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q13" name="q13" value="5"> 5 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q13" name="q13" value="6"> 6 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q13" name="q13" value="7"> 7 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q13" name="q13" value="8"> 8 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q13" name="q13" value="9"> 9 </input>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" id="q13" name="q13" value="10"> 10 </input>
+              </label>
+            </div>
+          </div>
+          <br>
+
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-outline-primary" onclick="getData()"> Submit </button>
   </div>
+  <div class="col">
+  </div>
+</div>
+</form>
+
+
+
+</div>
 </div>
 <script type="text/javascript" src="{{ url_for('static', filename='js/survey.js') }}"></script>
 {% endblock %}

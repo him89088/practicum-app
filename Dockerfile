@@ -1,8 +1,8 @@
 FROM python:3.7-alpine
 
-COPY . /responsive_games_app
+COPY . /final-app
 
-WORKDIR /responsive_games_app
+WORKDIR /final-app
 
 RUN apk --update add mysql-client
 

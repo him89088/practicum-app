@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/stroop.css') }}">
+{% endblock %}
+
 {% block body %}
 <div class="container-fluid container-sm container-md container-lg container-xl heading2">
     <div class="row text-center">

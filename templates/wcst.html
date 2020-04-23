@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/wcst.css') }}">
+{% endblock %}
+
 {% block body %}
 <div class="container-fluid container-sm container-md container-lg container-xl heading2">
     <div class="row">
@@ -68,7 +72,7 @@
                     Click on deck to sort card:
                 </p>
                 <!-- The showing the response card here (the cards that needs to be sorted to one of the four piles) -->
-                <img src="blank.png" id="WCSTresponseCard" alt="just nothing" />
+                <img  id="WCSTresponseCard" alt="just nothing" />
 
                 <!-- Feedback to the participant after choosing a pile the response card belongs to - was he right or wrong. -->
                 <p id="WCSTright" class="full block"> Correct</p>
@@ -93,5 +97,7 @@
         </div>
     </div>
 </form>
+
+  <script type="text/javascript" src="{{ url_for('static', filename='js/wcst.js') }}"></script>
 
 {% endblock %}

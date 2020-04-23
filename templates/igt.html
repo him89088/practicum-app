@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/igt.css') }}">
+{% endblock %}
+
 {% block body %}
 <div class="container-fluid container-sm container-md container-lg container-xl heading2">
 	<div class="row">
@@ -44,7 +48,7 @@
 		<div class="col-3">
 			<figure>
 				<a id="card-one" href="#" class="card">
-					<img class="img-responsive" alt="card back 1" src="static/img/blue-back.png" />
+					<img class="img-responsive" alt="card back 1" id = 'imgA' src="static/img/blue-back.png" />
 				</a>
 				<figcaption>
 					Deck A <span id="deck-one-clicks"></span>
@@ -54,7 +58,7 @@
 		<div class="col-3">
 			<figure>
 				<a id="card-two" href="#" class="card">
-					<img class="img-responsive" alt="card back 1" src="static/img/blue-back.png" />
+					<img class="img-responsive" alt="card back 1" id = 'imgB' src="static/img/blue-back.png" />
 				</a>
 				<figcaption>
 					Deck B <span id="deck-two-clicks"></span>
@@ -64,7 +68,7 @@
 		<div class="col-3">
 			<figure>
 				<a id="card-three" href="#" class="card">
-					<img class="img-responsive" alt="card back 1" src="static/img/blue-back.png" />
+					<img class="img-responsive" alt="card back 1" id = 'imgC' src="static/img/blue-back.png" />
 				</a>
 				<figcaption>
 					Deck C <span id="deck-three-clicks"></span>
@@ -74,7 +78,7 @@
 		<div class="col-3">
 			<figure>
 				<a id="card-four" href="#" class="card">
-					<img class="img-responsive" alt="card back 1" src="static/img/blue-back.png" />
+					<img class="img-responsive" alt="card back 1" id = 'imgD' src="static/img/blue-back.png" />
 				</a>
 				<figcaption>
 					Deck D <span id="deck-four-clicks"></span>

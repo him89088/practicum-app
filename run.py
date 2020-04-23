@@ -17,11 +17,12 @@ app.config.from_object(Config)
 #                         }
 
 # Setting the cloud DB
-app.config['dbconfig'] = { 'host' : 'xxxxxxxxxx',
-                            'user' : 'practicum-user',
-                            'password' : 'xxxxxxxxx',
-                            'database' : 'practicum_db',
-                        }
+# app.config['dbconfig'] = { 'host' : 'xxxxxxxxxx',
+#                             'user' : 'practicum-user',
+#                             'password' : 'xxxxxxxxx',
+#                             'database' : 'practicum_db',
+#                         }
+
 
 
 #Routing the opening page
@@ -60,7 +61,7 @@ def information() -> 'html':
 def survey() -> 'html':
     if request.method == "POST":
         return redirect(url_for(('wcst_page')))
-    return  render_template('survey.html', title='Survey', user=session['uid'])
+    return  render_template('survey.html', title='Brief Pain Inventory (Short Form)', user=session['uid'])
 
 # WCST Page
 @app.route('/wcst', methods=['GET','POST'])
@@ -147,12 +148,26 @@ def insert_survey():
             for rows in req_data:
                 gender = rows['gender']
                 age = rows['age']
-                pain = rows['pain']
+                pain_duration = rows['pain_duration']
+                q1 = rows['q1']
+                q2 = rows['q2']
+                q3 = rows['q3']
+                q4 = rows['q4']
+                q5 = rows['q5']
+                meds = rows['meds']
+                q6 = rows['q6']
+                q7 = rows['q7']
+                q8 = rows['q8']
+                q9 = rows['q9']
+                q10 = rows['q10']
+                q11 = rows['q11']
+                q12 = rows['q12']
+                q13 = rows['q13']
                 _SQL = """insert into survey
-                        (user, gender, age, pain) 
+                        (user, gender, age, pain_duration, q1, q2, q3, q4, q5, meds, q6, q7, q8, q9, q10, q11, q12, q13) 
                         values
-                        (%s, %s, %s, %s)"""
-                cursor.execute(_SQL,(userid, gender, age, pain))
+                        (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, %s, %s)"""
+                cursor.execute(_SQL,(userid, gender, age, pain_duration, q1, q2, q3, q4, q5, meds, q6, q7, q8, q9, q10, q11, q12, q13))
         return "Data Inserted"
 
 #Inserting Stroop Records

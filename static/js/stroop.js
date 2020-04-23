@@ -3,14 +3,13 @@ function startGame() {
   $("#dialogArea").hide();
   $("#endStroop").hide();
 
-  let s = new Stroop(100, 'practice');
+  let s = new Stroop(100, 'game');
   $("button").click(function() {
     var e = $(this).val();
     console.log(e);
     s.getResponse(e);
   });
   s.start();
- 
 }
 
 class Stroop {
@@ -26,53 +25,7 @@ class Stroop {
       'red', 'green', 'blue', 'yellow'
     ],
 
-      // this.smokingWords = [
-      //   'tobacco',
-      //   'drag',
-      //   'cigarette',
-      //   'smoke',
-      //   'ashtray',
-      //   'puff',
-      //   'lighter',
-      //   'inhale',
-      //   'smoking',
-      //   'nicotine',
-
-      //   'charm',
-      //   'dear',
-      //   'devotion',
-      //   'excited',
-      //   'joke',
-      //   'peace',
-      //   'playful',
-      //   'pleasant',
-      //   'sweet',
-      //   'thrilled',
-
-      //   'annoy',
-      //   'awful',
-      //   'boredom',
-      //   'complain',
-      //   'cruel',
-      //   'gloomy',
-      //   'tearful',
-      //   'sadness',
-      //   'sinful',
-      //   'slum',
-
-      //   'fan',
-      //   'fence',
-      //   'folder',
-      //   'notebook',
-      //   'pile',
-      //   'portion',
-      //   'reported',
-      //   'sewing',
-      //   'shift',
-      //   'stand'
-      // ];
-
-      this.practiceWords = [
+      this.gameWords = [
         'red',
         'blue',
         'yellow',
@@ -84,12 +37,8 @@ class Stroop {
     this.count = 0;
     this.maxCount = maxCount;
 
-    if (testType == 'practice') {
-      this.words = this.practiceWords;
-    }
-
-    else {
-      this.words = this.smokingWords;
+    if (testType == 'game') {
+      this.words = this.gameWords;
     }
 
     this.currentWord;
@@ -104,15 +53,14 @@ class Stroop {
   start() {
     self = this;
     console.log("Stroop is starting");
+    self.next();
     setTimeout(function () {
-      self.next();
       $(".btn-keys").show();
-    }, 3000);
+    }, 100);
   
   }
 
   next() {
-    clearTimeout(this.autoAdvance);
     this.acceptInput = true;
     if (this.count == this.maxCount)
       this.end();
@@ -120,25 +68,20 @@ class Stroop {
     this.currentWord = this.newWord();
     this.currentColor = this.newColor();
     this.displayWord();
-    // If no key is pressed
-    this.autoAdvance = setTimeout(function () {
-      self.newResponse(0, false);
-      self.displayIncorrect();
-      setTimeout(function () {
-        self.next();
-      }, 1500);
-    }, 3000);
   }
 
   getResponse(e) {
     let correct;
     self = this;
     if (this.validKeys.includes(e) && this.acceptInput) {
-      clearTimeout(this.autoAdvance);
       if (this.validKeys.indexOf(e) == this.currentColor) {
         correct = true;
+        this.displayCorrect();
+        setTimeout(function () {
+          self.next();
+        }, 800);
         this.newResponse(e, correct);
-        this.next();
+        // this.next();
       }
       else {
         correct = false;
@@ -146,7 +89,8 @@ class Stroop {
         this.acceptInput = false;
         setTimeout(function () {
           self.next();
-        }, 1500);
+        }, 800);
+        // this.next();
         this.newResponse(e, correct);
       }
     }
@@ -195,15 +139,19 @@ class Stroop {
     word.text('X').css({ 'color': self.colors[0] });
   }
 
+  displayCorrect(){
+    let word = jQuery('.word');
+    word.text('+').css({ 'color': '#000' });
+  }
+
   displayWord() {
     this.count++;
     this.displayTime = new Date().getTime();
     let self = this;
     let word = jQuery('.word');
-    word.text('+').css({ 'color': '#000' });
     setTimeout(function () {
       word.text(self.words[self.currentWord]).css({ 'color': self.colors[self.currentColor] });
-    }, 1000);
+    }, 100);
   }
 
   end() {

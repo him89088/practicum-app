@@ -24,6 +24,7 @@ var jsondata = []
 var Seq = 1;
 var path = '../static/img/';
 
+
 function WCSTstateTransitionToGame() {
     $('#WCSTinstructions').hide();
     $('#WCSTgameInstructions').show();

@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/thanks.css') }}">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% endblock %}
+
 {% block body %}
 <div class="container-fluid container-sm container-md container-lg container-xl heading2">
     <div class="row">

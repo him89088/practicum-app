@@ -1,138 +1,16 @@
-.heading2 {
-    padding-top: 30px;
-    padding-bottom: 30px;
-}
-
-.block {
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
-
-.full {
-    max-width: inherit;
-}
-
-#WCSTkeyCards{
-    display: none;
-}
-
-.KeyCards{
-    height : 200px; 
-    width : 200px;
-    cursor : pointer; 
-    cursor : hand;
-}
-
-#WCSTgameInstructions{
-    display: none; 
-}
-
-#WCSTresponseCard{
-    height : 200px; 
-    width : 200px;
-    display : none;
-}
-
-#WCSTright{
-    color : green; 
-    display : none; 
-}
-
-#WCSTwrong{
-    color : red; 
-    display : none; 
-}
-
-#WCSTendInstructions{
-    display : none; 
-}
-
-  /* 
-Extra small devices (portrait phones, less than 576px) 
-No media query since this is the default in Bootstrap because it is "mobile first"
-*/
- 
-@media (min-width:319px)  { 
-    .KeyCards{
-        height: 90px;
-        width: 90px;
-    }
-    #WCSTresponseCard {
-        height: 90px;
-        width: 90px;
-    }
-}
-@media (min-width:401px)  { 
-    .KeyCards{
-        height: 100px;
-        width: 100px;
-    }
-    #WCSTresponseCard {
-        height: 100px;
-        width: 100px;
-    }
-}
-@media (min-width:641px)  { 
-    .KeyCards{
-        height: 115px;
-        width: 115px;
-    }
-    #WCSTresponseCard {
-        height: 115px;
-        width: 115px;
-    }
-}
-/* @media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ 
-/* @media (min-width:1025px) { big landscape tablets, laptops, and desktops } */
-/* @media (min-width:1281px) { hi-res laptops and desktops }  */ 
-/* Small devices (landscape phones, 576px and up) */
-
-
- 
-/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
-@media (min-width: 768px) {  
-    .KeyCards{
-        height: 130px;
-        width: 130px;
-    }
-    #WCSTresponseCard {
-        height: 130px;
-        width: 130px;
-    }
-}
- 
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) { 
-    .KeyCards{
-        height: 160px;
-        width: 160px;
-    }
-    #WCSTresponseCard {
-        height: 160px;
-        width: 160px;
-    }
-}
- 
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {  
-    .KeyCards{
-        height: 200px;
-        width: 200px;
-    }
-    #WCSTresponseCard {
-        height: 200px;
-        width: 200px;
-    }
-}
- 
- 
- 
-/*
-::::::::::::::::::::::::::::::::::::::::::::::::::::
-Custom media queries
-*/
- 
-/* Set width to make card deck cards 100% width */
-@media (max-width: 950px) { 
- 
-}
+.heading2{padding-top:30px;padding-bottom:30px}
+.block{padding-top:15px;padding-bottom:15px}
+.full{max-width:inherit}
+#WCSTkeyCards{display:none}
+.KeyCards{height:200px;width:200px;cursor:pointer;cursor:hand}
+#WCSTgameInstructions{display:none}
+#WCSTresponseCard{height:200px;width:200px;display:none}
+#WCSTright{color:green;display:none}
+#WCSTwrong{color:red;display:none}
+#WCSTendInstructions{display:none}
+@media (min-width:319px){.KeyCards{height:90px;width:90px}#WCSTresponseCard{height:90px;width:90px}}
+@media (min-width:401px){.KeyCards{height:100px;width:100px}#WCSTresponseCard{height:100px;width:100px}}
+@media (min-width:641px){.KeyCards{height:115px;width:115px}#WCSTresponseCard{height:115px;width:115px}}
+@media (min-width:768px){.KeyCards{height:130px;width:130px}#WCSTresponseCard{height:130px;width:130px}}
+@media (min-width:992px){.KeyCards{height:160px;width:160px}#WCSTresponseCard{height:160px;width:160px}}
+@media (min-width:1200px){.KeyCards{height:200px;width:200px}#WCSTresponseCard{height:200px;width:200px}}

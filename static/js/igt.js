@@ -30,6 +30,7 @@ let results = {};
 var res;
 var response = [];
 
+
 function game() {
     $("#info").hide();
     $("#game").show();
