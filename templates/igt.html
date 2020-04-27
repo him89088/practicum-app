@@ -10,8 +10,8 @@
 		<div class="col">
 			<h2 class="text-center text-sm-center text-md-center text-lg-center text-xl-center">{{ title }}</h2>
 			<p class='float text-center'>
-                User: {{user}}
-            </p>
+				User: {{user}}
+			</p>
 		</div>
 	</div>
 </div>
@@ -48,7 +48,7 @@
 		<div class="col-3">
 			<figure>
 				<a id="card-one" href="#" class="card">
-					<img class="img-responsive" alt="card back 1" id = 'imgA' src="static/img/blue-back.png" />
+					<img class="img-responsive" alt="card back 1" id='imgA' src="static/img/blue-back.png" />
 				</a>
 				<figcaption>
 					Deck A <span id="deck-one-clicks"></span>
@@ -58,7 +58,7 @@
 		<div class="col-3">
 			<figure>
 				<a id="card-two" href="#" class="card">
-					<img class="img-responsive" alt="card back 1" id = 'imgB' src="static/img/blue-back.png" />
+					<img class="img-responsive" alt="card back 1" id='imgB' src="static/img/blue-back.png" />
 				</a>
 				<figcaption>
 					Deck B <span id="deck-two-clicks"></span>
@@ -68,7 +68,7 @@
 		<div class="col-3">
 			<figure>
 				<a id="card-three" href="#" class="card">
-					<img class="img-responsive" alt="card back 1" id = 'imgC' src="static/img/blue-back.png" />
+					<img class="img-responsive" alt="card back 1" id='imgC' src="static/img/blue-back.png" />
 				</a>
 				<figcaption>
 					Deck C <span id="deck-three-clicks"></span>
@@ -78,7 +78,7 @@
 		<div class="col-3">
 			<figure>
 				<a id="card-four" href="#" class="card">
-					<img class="img-responsive" alt="card back 1" id = 'imgD' src="static/img/blue-back.png" />
+					<img class="img-responsive" alt="card back 1" id='imgD' src="static/img/blue-back.png" />
 				</a>
 				<figcaption>
 					Deck D <span id="deck-four-clicks"></span>
@@ -120,5 +120,9 @@
 	</div>
 </form>
 <script type="text/javascript" src="{{ url_for('static', filename='js/igt.js') }}"></script>
-
+<div class="err" style="display: none;">
+	<br><br><br>
+	<p class="error footer">Click <a href="mailto:himanshu.vashisht2@mail.dcu.ie?Subject=App%20Error%20Reporting"
+			target="_top">here</a> to report an error</p>
+</div>
 {% endblock %}

@@ -2,6 +2,7 @@
 function startGame() {
   $("#dialogArea").hide();
   $("#endStroop").hide();
+  $(".err").show();
 
   let s = new Stroop(100, 'game');
   $("button").click(function() {
@@ -158,6 +159,7 @@ class Stroop {
     let results = JSON.stringify(this.responses);
     $("#stroop").hide();
     $('.btn-keys').hide();
+    $(".err").hide();
     $("#endStroop").show();
     setValues(results);
     console.log(results);

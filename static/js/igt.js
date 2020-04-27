@@ -33,6 +33,7 @@ var response = [];
 
 function game() {
     $("#info").hide();
+    $(".err").show();
     $("#game").show();
     $(".card").click(function () {
         totalclicks++; //increment our click counter.
@@ -126,6 +127,7 @@ function game() {
         else //game over 
         {
             $("#game").hide();
+            $(".err").hide();
             // alert("the game is over");
             $("#endigt").show();
             var i;

@@ -1,4 +1,5 @@
 .full{max-width:inherit}.heading2{padding-top:30px;padding-bottom:30px}
+.footer{left: 0;bottom: 0;width: 100%;text-align: center;font-size: smaller;}
 @media (min-width:576px){.h2{font-size:1.8rem}}
 @media (min-width:768px){.h2{font-size:1.8rem}}
 @media (min-width:992px){.h2{font-size:2 rem}}

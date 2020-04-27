@@ -23,7 +23,11 @@ app.config.from_object(Config)
 #                             'database' : 'practicum_db',
 #                         }
 
-
+app.config['dbconfig'] = { 'host' : '34.77.245.137',
+                            'user' : 'practicum-user',
+                            'password' : 'Him@89088',
+                            'database' : 'practicum_db',
+                        }
 
 #Routing the opening page
 @app.route('/')
@@ -40,7 +44,7 @@ def hello():
 def disclaimer() -> 'html':
     if request.method == "POST":
         return redirect(url_for(('pls')))
-    return  render_template('disclaimer.html', title='Welcome to our Decision Making research!', user=session['uid'])
+    return  render_template('disclaimer.html', title='Modelling the Effects of Chronic Pain on Human Decision Making', user=session['uid'])
 
 #Plain Language Statement
 @app.route('/pls', methods=['GET','POST'])

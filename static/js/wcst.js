@@ -27,6 +27,7 @@ var path = '../static/img/';
 
 function WCSTstateTransitionToGame() {
     $('#WCSTinstructions').hide();
+    $(".err").show();
     $('#WCSTgameInstructions').show();
     $('#WCSTkeyCards').show();
     state = 'WCSTgame';
@@ -163,6 +164,7 @@ function WCSTstateTransitionToEnd() {		//At this state only the end instructions
     $('#WCSTkeyCards').hide();
     $('#WCSTgameInstructions').hide();
     $('#WCSTwrong').hide();
+    $(".err").hide();
     $('#WCSTright').hide();
     setTimeout(function () {
         $('#WCSTendInstructions').show();
