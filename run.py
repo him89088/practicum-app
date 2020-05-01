@@ -23,11 +23,6 @@ app.config.from_object(Config)
 #                             'database' : 'practicum_db',
 #                         }
 
-app.config['dbconfig'] = { 'host' : '34.77.245.137',
-                            'user' : 'practicum-user',
-                            'password' : 'Him@89088',
-                            'database' : 'practicum_db',
-                        }
 
 #Routing the opening page
 @app.route('/')
